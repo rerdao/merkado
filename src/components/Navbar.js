@@ -33,6 +33,7 @@ import extjs from '../ic/extjs.js';
 import {icpToString} from './PriceICP';
 import {useSearchParams} from 'react-router-dom';
 import {loadVolt, loadVoltBalance} from '../volt';
+
 function useInterval(callback, delay) {
     const savedCallback = React.useRef();
 
@@ -168,10 +169,7 @@ export default function Navbar(props) {
         </>
     );
 
-    const entrepotTitleStyles = {
-        ...cssToReactStyleObject(toniqFontStyles.h2Font),
-        ...cssToReactStyleObject(toniqFontStyles.extraBoldFont),
-    };
+    const entrepotTitleStyles = {};
 
     return (
         <>
@@ -186,7 +184,7 @@ export default function Navbar(props) {
             />
             <div className={classes.root}>
                 <CssBaseline />
-                <AppBar position="fixed" style={{zIndex: 1400, background: 'white'}}>
+                <AppBar position="fixed" style={{zIndex: 1400, background: 'black'}}>
                     <Toolbar style={{gap: '4px', alignItems: 'stretch', minHeight: '70px'}}>
                         <Typography
                             style={{display: 'flex', alignItems: 'center'}}
@@ -197,18 +195,24 @@ export default function Navbar(props) {
                                 style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}}
                                 onClick={() => goTo('/')}
                             >
-                                <ToniqIcon
-                                    className={`toniq-icon-fit-icon ${classes.icpButton}`}
+                                <img
+                                    src="/Mdvo.png"
                                     style={{
                                         height: '54px',
                                         width: '54px',
-                                        flexShrink: '0',
                                         margin: '8px',
-                                        color: toniqColors.brandPrimary.foregroundColor,
                                     }}
-                                    icon={EntrepotLogo144Icon}
+                                    alt="Logo"
                                 />
-                                <span style={entrepotTitleStyles}>Merkado</span>
+                                <span
+                                    style={{
+                                        color: 'white',
+                                        fontFamily: 'Noto-Serif',
+                                        fontSize: 30,
+                                    }}
+                                >
+                                    Merkado
+                                </span>
                             </a>
                         </Typography>
                         <ToniqInput

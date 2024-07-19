@@ -10,7 +10,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-import {clipboardCopy} from '../utils';
+import {clipboardCopy} from '../utils.js';
 
 import {StoicIdentity} from 'ic-stoic-identity';
 import extjs from '../ic/extjs.js';

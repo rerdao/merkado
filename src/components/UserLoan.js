@@ -1,6 +1,5 @@
 /* global BigInt */
 import React from 'react';
-import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -42,10 +41,9 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import Tooltip from '@material-ui/core/Tooltip';
-import {EntrepotUpdateStats, EntrepotCollectionStats} from '../utils';
+import {MerkadoUpdateStats, MerkadoCollectionStats} from '../utils';
 
 import CloseIcon from '@material-ui/icons/Close';
-const api = extjs.connect('https://icp0.io/');
 const perPage = 60;
 const _isCanister = c => {
     return c.length == 27 && c.split('-').length == 5;
@@ -398,7 +396,7 @@ export default function UserLoan(props) {
         }
         data = data.map(a => {
             let {canister, index} = extjs.decodeTokenId(a.tokenid);
-            var s = EntrepotCollectionStats(canister);
+            var s = MerkadoCollectionStats(canister);
             var data = {...a, days: getDays(a), apr: getApr(a)};
             if (!isNaN(Number(s.floor))) {
                 data.floor = BigInt(Math.round(Number(s.floor) * 100000000));
@@ -480,7 +478,7 @@ export default function UserLoan(props) {
 
     React.useEffect(() => {
         console.log('Hook: start');
-        EntrepotUpdateStats().then(r => {
+        MerkadoUpdateStats().then(r => {
             setDisplayedResults(false);
         });
     }, []);
@@ -569,7 +567,7 @@ export default function UserLoan(props) {
                                                     'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
                                             }}
                                         >
-                                            Toniq Earn is powered by Interesting NFT Protocol,{' '}
+                                            Merkado Earn is powered by Interesting NFT Protocol,{' '}
                                             <strong>
                                                 a 100% non-custodial and decentralized interest rate
                                                 protocol

@@ -50,7 +50,7 @@ export function AngelInvestorDialog(props) {
             aria-labelledby="angel-investor-title"
             aria-describedby="angel-investor-description"
         >
-            <DialogTitle id="alert-dialog-title">Toniq Investment Opportunity</DialogTitle>
+            <DialogTitle id="alert-dialog-title">Merkado Investment Opportunity</DialogTitle>
             <DialogContent>
                 <DialogContentText id="angel-investor-description">
                     Hey! It's <a href="https://twitter.com/bobbodily">Bob, CEO of Toniq</a>. I ran
@@ -58,7 +58,7 @@ export function AngelInvestorDialog(props) {
                     you! We never would have made it this far without you.
                     <br />
                     <br />
-                    In the near future, Toniq will be raising investment capital for the next phase
+                    In the near future, Merkadowill be raising investment capital for the next phase
                     of development for Entrepot, Stoic, and our minting launchpad. Our top priority
                     is to grow with real input and support from the community. For this reason,
                     we're giving some community members the{' '}

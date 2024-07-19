@@ -157,7 +157,7 @@ const clipboardCopy = text => {
     displayDate = d => {
         return new Date(d).toString();
     },
-    EntrepotEarnDetailsData = id => {
+    MerkadoEarnDetailsData = id => {
         if (!earnData.hasOwnProperty(id)) {
             api.canister(TREASURECANISTER)
                 .tp_loanDetails(id)
@@ -170,7 +170,7 @@ const clipboardCopy = text => {
         }
         return 0n;
     },
-    EntrepotEarnDetails = (id, nft_price) => {
+    MerkadoEarnDetails = (id, nft_price) => {
         if (!earnData.hasOwnProperty(id)) {
             api.canister(TREASURECANISTER)
                 .tp_loanDetails(id)
@@ -193,12 +193,12 @@ const clipboardCopy = text => {
                     Receive NFT or Profit{' '}
                     <span
                         style={
-                            EntrepotEarnDetailsData(id) > nft_price
+                            MerkadoEarnDetailsData(id) > nft_price
                                 ? {color: 'green'}
                                 : {color: 'red'}
                         }
                     >
-                        <PriceICP price={EntrepotEarnDetailsData(id) - nft_price} />
+                        <PriceICP price={MerkadoEarnDetailsData(id) - nft_price} />
                     </span>
                     <br />
                     <Timestamp
@@ -211,7 +211,7 @@ const clipboardCopy = text => {
         }
         return '';
     },
-    EntrepotNFTImage = (collection, index, id, fullSize, ref, cachePriority) => {
+    MerkadoNFTImage = (collection, index, id, fullSize, ref, cachePriority) => {
         if (typeof ref == 'undefined') ref = '';
         else ref = '?' + ref;
 
@@ -319,7 +319,7 @@ const clipboardCopy = text => {
             //return "https://"+collection+".raw.icp0.io/?cc=0&type=thumbnail&tokenid=" + id;
         }
     },
-    EntrepotNFTLink = (collection, index, id) => {
+    MerkadoNFTLink = (collection, index, id) => {
         if (collection === 'jeghr-iaaaa-aaaah-qco7q-cai')
             return 'https://fl5nr-xiaaa-aaaai-qbjmq-cai.raw.icp0.io/nft/' + index;
         if (collection === 'bxdf4-baaaa-aaaah-qaruq-cai')
@@ -331,7 +331,7 @@ const clipboardCopy = text => {
         if (collection === 'q6hjz-kyaaa-aaaah-qcama-cai') return icpbunnyimg(index);
         return 'https://' + collection + '.raw.icp0.io/?tokenid=' + id;
     },
-    EntrepotDisplayNFT = (collection, tokenid, imgLoaded, image, onload) => {
+    MerkadoDisplayNFT = (collection, tokenid, imgLoaded, image, onload) => {
         var avatarImgStyle = {
             position: 'absolute',
             top: '0%',
@@ -394,7 +394,7 @@ const clipboardCopy = text => {
                     });
             } else {
                 let {index, canister} = extjs.decodeTokenId(earnData[tokenid].tokenid);
-                nftimg = EntrepotNFTImage(canister, index, earnData[tokenid].tokenid, false);
+                nftimg = MerkadoNFTImage(canister, index, earnData[tokenid].tokenid, false);
             }
             return (
                 <>
@@ -467,7 +467,7 @@ const clipboardCopy = text => {
             </>
         );
     },
-    EntrepotNFTMintNumber = (collection, index, id) => {
+    MerkadoNFTMintNumber = (collection, index, id) => {
         if (collection === 'bxdf4-baaaa-aaaah-qaruq-cai') return index;
         if (collection === 'y3b7h-siaaa-aaaah-qcnwa-cai') return index;
         if (collection === '3db6u-aiaaa-aaaah-qbjbq-cai') return index;
@@ -475,19 +475,19 @@ const clipboardCopy = text => {
         if (collection === 'jeghr-iaaaa-aaaah-qco7q-cai') return index;
         return index + 1;
     },
-    EntrepotAllStats = () => {
+    MerkadoAllStats = () => {
         return _stats;
     },
-    EntrepotCollectionStats = c => {
+    MerkadoCollectionStats = c => {
         var s = _stats.filter(a => a.canister === c);
         if (s.length) return s[0].stats;
         else return false;
     },
-    EntrepotUpdateStats = async () => {
+    MerkadoUpdateStats = async () => {
         await _getStats();
         return _stats;
     },
-    EntrepotUpdateUSD = async () => {
+    MerkadoUpdateUSD = async () => {
         if (!lastUpdate || Date.now() - lastUpdate > 10 * 60 * 1000) {
             lastUpdate = Date.now();
             var b = await api.canister('rkp4c-7iaaa-aaaaa-aaaca-cai').get_icp_xdr_conversion_rate();
@@ -500,46 +500,46 @@ const clipboardCopy = text => {
         }
         return _rate;
     },
-    EntrepotGetICPUSD = n => {
+    MerkadoGetICPUSD = n => {
         if (_rate) return (_rate * (Number(n) / 100000000)).toFixed(2);
         else return false;
     },
-    EntrepotClearLiked = async () => {
+    MerkadoClearLiked = async () => {
         _liked = [];
     },
-    EntrepotGetAllLiked = () => {
+    MerkadoGetAllLiked = () => {
         return _liked;
     },
-    EntrepotUpdateLiked = async identity => {
+    MerkadoUpdateLiked = async identity => {
         if (identity) {
             const _api = extjs.connect('https://icp0.io/', identity);
             _liked = await _api.canister('6z5wo-yqaaa-aaaah-qcsfa-cai').liked();
         } else _liked = [];
     },
-    EntrepotSaveLiked = async identity => {
+    MerkadoSaveLiked = async identity => {
         if (identity) {
             const _api = extjs.connect('https://icp0.io/', identity);
             await _api.canister('6z5wo-yqaaa-aaaah-qcsfa-cai').saveLiked(_liked);
         }
     },
-    EntrepotIsLiked = tokenid => {
+    MerkadoIsLiked = tokenid => {
         return _liked.indexOf(tokenid) >= 0;
     },
-    EntrepotLike = async (tokenid, id) => {
+    MerkadoLike = async (tokenid, id) => {
         if (!id) return;
         _liked.push(tokenid);
         if (!tokenLikes.hasOwnProperty(tokenid)) tokenLikes[tokenid] = 0;
         tokenLikes[tokenid]++;
-        await EntrepotSaveLiked(id);
+        await MerkadoSaveLiked(id);
     },
-    EntrepotUnike = async (tokenid, id) => {
+    MerkadoUnike = async (tokenid, id) => {
         if (!id) return;
         _liked = _liked.filter(a => a != tokenid);
         if (!tokenLikes.hasOwnProperty(tokenid)) tokenLikes[tokenid] = 0;
         tokenLikes[tokenid]--;
-        await EntrepotSaveLiked(id);
+        await MerkadoSaveLiked(id);
     },
-    EntrepotGetLikes = async (tokenid, skipCache) => {
+    MerkadoGetLikes = async (tokenid, skipCache) => {
         if (!tokenLikes.hasOwnProperty(tokenid) || !skipCache) {
             var likes = await api.canister('6z5wo-yqaaa-aaaah-qcsfa-cai').likes(tokenid);
             tokenLikes[tokenid] = Number(likes);
@@ -556,22 +556,22 @@ export {
     compressAddress,
     displayDate,
     numf,
-    EntrepotUpdateStats,
-    EntrepotNFTImage,
-    EntrepotNFTLink,
-    EntrepotNFTMintNumber,
-    EntrepotDisplayNFT,
-    EntrepotAllStats,
-    EntrepotCollectionStats,
-    EntrepotUpdateUSD,
-    EntrepotGetICPUSD,
-    EntrepotUpdateLiked,
-    EntrepotIsLiked,
-    EntrepotLike,
-    EntrepotUnike,
-    EntrepotGetLikes,
-    EntrepotClearLiked,
-    EntrepotGetAllLiked,
-    EntrepotEarnDetails,
-    EntrepotEarnDetailsData,
+    MerkadoUpdateStats,
+    MerkadoNFTImage,
+    MerkadoNFTLink,
+    MerkadoNFTMintNumber,
+    MerkadoDisplayNFT,
+    MerkadoAllStats,
+    MerkadoCollectionStats,
+    MerkadoUpdateUSD,
+    MerkadoGetICPUSD,
+    MerkadoUpdateLiked,
+    MerkadoIsLiked,
+    MerkadoLike,
+    MerkadoUnike,
+    MerkadoGetLikes,
+    MerkadoClearLiked,
+    MerkadoGetAllLiked,
+    MerkadoEarnDetails,
+    MerkadoEarnDetailsData,
 };

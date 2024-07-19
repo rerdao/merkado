@@ -11,12 +11,7 @@ import Alert from '@material-ui/lab/Alert';
 import PriceICP from './PriceICP';
 import PriceUSD from './PriceUSD';
 import extjs from '../ic/extjs.js';
-import {
-    EntrepotNFTImage,
-    EntrepotDisplayNFT,
-    EntrepotGetICPUSD,
-    EntrepotEarnDetailsData,
-} from '../utils.js';
+import {MerkadoNFTImage, MerkadoGetICPUSD, MerkadoEarnDetailsData} from '../utils.js';
 const TREASURECANISTER = 'yigae-jqaaa-aaaah-qczbq-cai';
 
 export default function BuyForm(props) {
@@ -36,7 +31,7 @@ export default function BuyForm(props) {
             <DialogContent>
                 <img
                     alt="NFT"
-                    src={EntrepotNFTImage(props.canister, props.index, props.tokenid)}
+                    src={MerkadoNFTImage(props.canister, props.index, props.tokenid)}
                     style={{
                         maxHeight: '200px',
                         margin: '0px auto 20px',
@@ -56,7 +51,7 @@ export default function BuyForm(props) {
                 {props.canister == TREASURECANISTER ? (
                     <Alert severity="warning">
                         <strong>
-                            This is a Toniq Earn contract; do not confuse for actual NFTs
+                            This is a Merkado Earn contract; do not confuse for actual NFTs
                             <Grid container style={{padding: 20}}>
                                 <Grid item xs={6} style={{textAlign: 'left'}}>
                                     <strong>NFT Cost</strong>
@@ -73,7 +68,7 @@ export default function BuyForm(props) {
                                     <span>
                                         <PriceICP
                                             size={20}
-                                            price={EntrepotEarnDetailsData(props.tokenid)}
+                                            price={MerkadoEarnDetailsData(props.tokenid)}
                                         />
                                     </span>
                                 </Grid>
@@ -83,7 +78,7 @@ export default function BuyForm(props) {
                                 <Grid item xs={6} style={{textAlign: 'right'}}>
                                     <span
                                         style={
-                                            EntrepotEarnDetailsData(props.tokenid) > props.price
+                                            MerkadoEarnDetailsData(props.tokenid) > props.price
                                                 ? {color: 'green'}
                                                 : {color: 'red'}
                                         }
@@ -91,7 +86,7 @@ export default function BuyForm(props) {
                                         <PriceICP
                                             size={20}
                                             price={
-                                                EntrepotEarnDetailsData(props.tokenid) - props.price
+                                                MerkadoEarnDetailsData(props.tokenid) - props.price
                                             }
                                         />
                                     </span>
@@ -118,7 +113,7 @@ export default function BuyForm(props) {
                             <br />
                             {props.price ? (
                                 <>
-                                    ~<PriceUSD price={EntrepotGetICPUSD(props.price)} />
+                                    ~<PriceUSD price={MerkadoGetICPUSD(props.price)} />
                                 </>
                             ) : (
                                 ''

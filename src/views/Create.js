@@ -113,7 +113,7 @@ export default function Create(props) {
                                 }}
                             >
                                 The easiest way to mint NFTs on the Internet Computer is to complete
-                                the form below to get access to Toniq Mint — our no-code
+                                the form below to get access to Merkado Mint — our no-code
                                 self-minting tool. Anyone can mint NFTs on the Internet Computer
                                 using our on chain tools. If you are looking for more technical
                                 resources to mint NFTs, please reach out to support@toniqlabs.com.

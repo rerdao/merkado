@@ -1,5 +1,7 @@
 import {red} from '@material-ui/core/colors';
 import {createTheme} from '@material-ui/core/styles';
+import '@fontsource/akaya-telivigala';
+import '@fontsource/sora';
 
 // A custom theme for this app
 const theme = createTheme({

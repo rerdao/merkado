@@ -20,10 +20,10 @@ import PriceICP from './PriceICP';
 import getNri from '../ic/nftv.js';
 import {makeStyles} from '@material-ui/core';
 import {
-    EntrepotEarnDetails,
-    EntrepotNFTImage,
-    EntrepotNFTMintNumber,
-    EntrepotDisplayNFT,
+    MerkadoEarnDetails,
+    MerkadoNFTImage,
+    MerkadoNFTMintNumber,
+    MerkadoDisplayNFT,
     getEXTCanister,
     toWrappedMap,
 } from '../utils';
@@ -253,11 +253,11 @@ export default function NFT(props) {
     };
     var buttonLoadingText = <CircularProgress size={20.77} style={{color: 'white', margin: 1}} />;
     const collection = getCollection(canister);
-    const nftImage = EntrepotDisplayNFT(
+    const nftImage = MerkadoDisplayNFT(
         getEXTCanister(canister),
         tokenid,
         imgLoaded,
-        EntrepotNFTImage(getEXTCanister(canister), index, tokenid, false, ref, collection.priority),
+        MerkadoNFTImage(getEXTCanister(canister), index, tokenid, false, ref, collection.priority),
         () => setImgLoaded(true),
     );
 
@@ -395,7 +395,7 @@ export default function NFT(props) {
                 }
                 if (earnCollections.indexOf(canister) >= 0) {
                     buttons.push([
-                        'Toniq Earn',
+                        'Merkado Earn',
                         () =>
                             props.pawnNft(
                                 {id: tokenid, canister, listing},
@@ -424,7 +424,7 @@ export default function NFT(props) {
         return buttons;
     };
     const mintNumber = () => {
-        return EntrepotNFTMintNumber(canister, index);
+        return MerkadoNFTMintNumber(canister, index);
     };
     const wrappedCanisters = [
         'jeghr-iaaaa-aaaah-qco7q-cai',
@@ -723,7 +723,7 @@ export default function NFT(props) {
                             props.view == 'marketplace' &&
                             canister === TREASURECANISTER ? (
                                 <Grid item xs={12}>
-                                    {EntrepotEarnDetails(tokenid, listing.price)}
+                                    {MerkadoEarnDetails(tokenid, listing.price)}
                                 </Grid>
                             ) : (
                                 ''

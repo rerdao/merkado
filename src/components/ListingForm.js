@@ -9,7 +9,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '@material-ui/lab/Alert';
 import extjs from '../ic/extjs.js';
-import {EntrepotNFTImage, EntrepotDisplayNFT, getEXTCanister} from '../utils';
+import {MerkadoNFTImage, MerkadoDisplayNFT, getEXTCanister} from '../utils';
 
 export default function ListingForm(props) {
     const [
@@ -120,11 +120,11 @@ export default function ListingForm(props) {
     ] = React.useState(false);
 
     const nftImage = props?.nft?.collection?.id
-        ? EntrepotDisplayNFT(
+        ? MerkadoDisplayNFT(
               getEXTCanister(props.nft.collection.id),
               props.nft.id,
               nftImageLoaded,
-              EntrepotNFTImage(
+              MerkadoNFTImage(
                   getEXTCanister(props.nft.collection.id),
                   decodedToken?.index,
                   props.nft.id,

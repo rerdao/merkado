@@ -16,11 +16,11 @@ import {Icon} from '@material-ui/core';
 import {useNavigate, Link} from 'react-router-dom';
 import extjs from '../ic/extjs.js';
 import {
-    EntrepotNFTImage,
-    EntrepotNFTLink,
-    EntrepotNFTMintNumber,
-    EntrepotDisplayNFT,
-    EntrepotGetICPUSD,
+    MerkadoNFTImage,
+    MerkadoNFTLink,
+    MerkadoNFTMintNumber,
+    MerkadoDisplayNFT,
+    MerkadoGetICPUSD,
 } from '../utils.js';
 const _showListingPrice = n => {
     n = Number(n) / 100000000;
@@ -66,13 +66,13 @@ export default function Event(props) {
     };
 
     const mintNumber = () => {
-        return EntrepotNFTMintNumber(props.collection, index);
+        return MerkadoNFTMintNumber(props.collection, index);
     };
     const nftImg = () => {
-        return EntrepotNFTImage(props.collection, index, tokenid);
+        return MerkadoNFTImage(props.collection, index, tokenid);
     };
     const nftLink = () => {
-        return EntrepotNFTLink(props.collection, index, tokenid);
+        return MerkadoNFTLink(props.collection, index, tokenid);
     };
     const shorten = a => {
         return a.substring(0, 12) + '...';
@@ -142,12 +142,8 @@ export default function Event(props) {
                         }}
                     >
                         <div style={{...styles.avatarSkeletonContainer}}>
-                            {EntrepotDisplayNFT(
-                                props.collection,
-                                tokenid,
-                                imgLoaded,
-                                nftImg(),
-                                () => setImgLoaded(true),
+                            {MerkadoDisplayNFT(props.collection, tokenid, imgLoaded, nftImg(), () =>
+                                setImgLoaded(true),
                             )}
                         </div>
                     </div>
@@ -161,9 +157,9 @@ export default function Event(props) {
                     <PriceICP price={event.price} />
                 </strong>
                 <br />
-                {EntrepotGetICPUSD(event.price) ? (
+                {MerkadoGetICPUSD(event.price) ? (
                     <small>
-                        <PriceUSD price={EntrepotGetICPUSD(event.price)} />
+                        <PriceUSD price={MerkadoGetICPUSD(event.price)} />
                     </small>
                 ) : (
                     ''

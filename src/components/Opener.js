@@ -8,11 +8,11 @@ import Button from '@material-ui/core/Button';
 import Flip from './Flip';
 import extjs from '../ic/extjs.js';
 import {
-    EntrepotNFTImage,
-    EntrepotNFTLink,
-    EntrepotNFTMintNumber,
-    EntrepotDisplayNFT,
-    EntrepotGetICPUSD,
+    MerkadoNFTImage,
+    MerkadoNFTLink,
+    MerkadoNFTMintNumber,
+    MerkadoDisplayNFT,
+    MerkadoGetICPUSD,
 } from '../utils';
 var settings = {
     '6wih6-siaaa-aaaah-qczva-cai': {
@@ -183,7 +183,7 @@ export default function Opener(props) {
                                             <>
                                                 <img
                                                     style={{borderRadius: 10, width: 300}}
-                                                    src={EntrepotNFTImage(
+                                                    src={MerkadoNFTImage(
                                                         props.nft.canister,
                                                         index,
                                                         props.nft.id,

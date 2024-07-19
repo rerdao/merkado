@@ -34,12 +34,7 @@ import GeneralSaleComponent from './components/sale/GeneralSaleComponent';
 import DfinityDeckSaleComponent from './components/sale/DfinityDeckSaleComponent';
 import legacyPrincipalPayouts from './payments.json';
 import getNri from './ic/nftv.js';
-import {
-    EntrepotUpdateUSD,
-    EntrepotUpdateLiked,
-    EntrepotClearLiked,
-    EntrepotUpdateStats,
-} from './utils';
+import {MerkadoUpdateUSD, MerkadoUpdateLiked, MerkadoClearLiked, MerkadoUpdateStats} from './utils';
 import {MissingPage404} from './views/MissingPage404';
 import {checkIfToniqEarnAllowed} from './location/geo-ip';
 import {EarnFeaturesBlocked} from './views/EarnBlocked';
@@ -130,23 +125,23 @@ const emptyListing = {
 var buttonLoader = false;
 var refresher = false;
 const canisterMap = {
-    'fl5nr-xiaaa-aaaai-qbjmq-cai': 'jeghr-iaaaa-aaaah-qco7q-cai',
-    '4nvhy-3qaaa-aaaah-qcnoq-cai': 'y3b7h-siaaa-aaaah-qcnwa-cai',
-    'qcg3w-tyaaa-aaaah-qakea-cai': 'bxdf4-baaaa-aaaah-qaruq-cai',
+    // 'fl5nr-xiaaa-aaaai-qbjmq-cai': 'jeghr-iaaaa-aaaah-qco7q-cai',
+    // '4nvhy-3qaaa-aaaah-qcnoq-cai': 'y3b7h-siaaa-aaaah-qcnwa-cai',
+    // 'qcg3w-tyaaa-aaaah-qakea-cai': 'bxdf4-baaaa-aaaah-qaruq-cai',
     'd3ttm-qaaaa-aaaai-qam4a-cai': '3db6u-aiaaa-aaaah-qbjbq-cai',
     'xkbqi-2qaaa-aaaah-qbpqq-cai': 'q6hjz-kyaaa-aaaah-qcama-cai',
 };
 var otherPrincipalsForPlug = [
     'xkbqi-2qaaa-aaaah-qbpqq-cai',
     'd3ttm-qaaaa-aaaai-qam4a-cai',
-    'qcg3w-tyaaa-aaaah-qakea-cai',
-    '4nvhy-3qaaa-aaaah-qcnoq-cai',
-    'ryjl3-tyaaa-aaaaa-aaaba-cai',
-    'qgsqp-byaaa-aaaah-qbi4q-cai',
-    '6z5wo-yqaaa-aaaah-qcsfa-cai',
-    'flvm3-zaaaa-aaaak-qazaq-cai',
-    'fcwhh-piaaa-aaaak-qazba-cai',
-    'ffxbt-cqaaa-aaaak-qazbq-cai',
+    // 'qcg3w-tyaaa-aaaah-qakea-cai',
+    // '4nvhy-3qaaa-aaaah-qcnoq-cai',
+    // 'ryjl3-tyaaa-aaaaa-aaaba-cai',
+    // 'qgsqp-byaaa-aaaah-qbi4q-cai',
+    // '6z5wo-yqaaa-aaaah-qcsfa-cai',
+    // 'flvm3-zaaaa-aaaak-qazaq-cai',
+    // 'fcwhh-piaaa-aaaak-qazba-cai',
+    // 'ffxbt-cqaaa-aaaak-qazbq-cai',
 ];
 const isDevEnv = () => {
     if (window.location.hostname == 'localhost') return true;
@@ -271,8 +266,8 @@ export default function App() {
     ] = React.useState(0);
 
     const _updates = async () => {
-        EntrepotUpdateUSD();
-        setStats(await EntrepotUpdateStats());
+        MerkadoUpdateUSD();
+        setStats(await MerkadoUpdateStats());
     };
 
     const _buyForm = (tokenid, price) => {
@@ -653,7 +648,7 @@ export default function App() {
         loader(false);
     };
 
-    useInterval(() => EntrepotUpdateLiked(identity), 10 * 1000);
+    useInterval(() => MerkadoUpdateLiked(identity), 10 * 1000);
     useInterval(() => updateCollections(), 5 * 60 * 1000);
     useInterval(_updates, 2 * 60 * 1000);
     const alert = (title, message, buttonLabel) => {
@@ -1068,9 +1063,9 @@ export default function App() {
 
     React.useEffect(() => {
         updateCollections();
-        EntrepotUpdateUSD();
-        EntrepotUpdateStats().then(setStats);
-        if (identity) EntrepotUpdateLiked(identity);
+        MerkadoUpdateUSD();
+        MerkadoUpdateStats().then(setStats);
+        if (identity) MerkadoUpdateLiked(identity);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     React.useEffect(() => {
@@ -1164,7 +1159,7 @@ export default function App() {
                         break;
                 }
             }
-            if (identity) EntrepotUpdateLiked(identity);
+            if (identity) MerkadoUpdateLiked(identity);
         }
     }, [appLoaded]);
     React.useEffect(() => {
@@ -1180,9 +1175,9 @@ export default function App() {
                     }
                 }
             }
-            EntrepotUpdateLiked(identity);
+            MerkadoUpdateLiked(identity);
         } else {
-            EntrepotClearLiked();
+            MerkadoClearLiked();
             setLoggedIn(false);
             setAddress(false);
             setAccounts(false);
@@ -1192,7 +1187,7 @@ export default function App() {
     const footer = (
         <div className={classes.footer}>
             <Typography variant="body1">
-                Developed by ToniqLabs &copy; All rights reserved 2021
+                Developed by NFTDavao &copy; All rights reserved 2024
                 <br />
                 <a
                     href="https://docs.google.com/document/d/13aj8of_UXdByGoFdMEbbIyltXMn0TXHiUie2jO-qnNk/edit"

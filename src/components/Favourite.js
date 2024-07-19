@@ -6,11 +6,11 @@ import IconButton from '@material-ui/core/IconButton';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {
-    EntrepotIsLiked,
-    EntrepotLike,
-    EntrepotUnike,
-    EntrepotGetLikes,
-    EntrepotUpdateLiked,
+    MerkadoIsLiked,
+    MerkadoLike,
+    MerkadoUnike,
+    MerkadoGetLikes,
+    MerkadoUpdateLiked,
 } from '../utils';
 function useInterval(callback, delay) {
     const savedCallback = React.useRef();
@@ -36,7 +36,7 @@ export default function Favourite(props) {
     const [
         liked,
         setLiked,
-    ] = React.useState(EntrepotIsLiked(props.tokenid));
+    ] = React.useState(MerkadoIsLiked(props.tokenid));
     const [
         count,
         setCount,
@@ -45,8 +45,8 @@ export default function Favourite(props) {
     const iconSize = props?.size == 'large' ? {width: 24, height: 24} : {width: 22, height: 22};
     const _refresh = async () => {
         if (skipRefresh) return;
-        if (props.showcount) EntrepotGetLikes(props.tokenid).then(r => setCount(r));
-        setLiked(EntrepotIsLiked(props.tokenid));
+        if (props.showcount) MerkadoGetLikes(props.tokenid).then(r => setCount(r));
+        setLiked(MerkadoIsLiked(props.tokenid));
     };
     useInterval(_refresh, 10 * 1000);
     const like = async () => {
@@ -55,14 +55,14 @@ export default function Favourite(props) {
         if (liked) {
             setCount(count - 1);
             setLiked(false);
-            EntrepotUnike(props.tokenid, props.identity);
+            MerkadoUnike(props.tokenid, props.identity);
         } else {
             setCount(count ? count + 1 : 1);
             setLiked(true);
-            EntrepotLike(props.tokenid, props.identity);
+            MerkadoLike(props.tokenid, props.identity);
         }
         if (props.refresher) props.refresher();
-        var c = await EntrepotGetLikes(props.tokenid, true);
+        var c = await MerkadoGetLikes(props.tokenid, true);
         setCount(c);
         skipRefresh = false;
     };

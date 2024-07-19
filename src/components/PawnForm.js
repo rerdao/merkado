@@ -13,7 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '@material-ui/lab/Alert';
 import extjs from '../ic/extjs.js';
-import {EntrepotNFTImage} from '../utils.js';
+import {MerkadoNFTImage} from '../utils.js';
 
 export default function PawnForm(props) {
     const [
@@ -100,7 +100,7 @@ export default function PawnForm(props) {
                 <DialogContent>
                     <img
                         alt="NFT"
-                        src={props.nft.id ? EntrepotNFTImage(canister, index, props.nft.id) : ''}
+                        src={props.nft.id ? MerkadoNFTImage(canister, index, props.nft.id) : ''}
                         style={{
                             maxHeight: '200px',
                             margin: '0px auto 20px',

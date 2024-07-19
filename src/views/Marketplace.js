@@ -131,7 +131,7 @@ export default function Marketplace(props) {
                     >
                         {props.collections
                             .filter(collection => {
-                                // prevent Toniq Earn related collections from showing up in countries where its blocked
+                                // prevent Merkado Earn related collections from showing up in countries where its blocked
                                 const allowed = isToniqEarnCollection(collection)
                                     ? props.isToniqEarnAllowed
                                     : true;

@@ -9,30 +9,22 @@ import Wallet from '../components/Wallet';
 import {makeStyles} from '@material-ui/core';
 import {
     ToniqToggleButton,
-    ToniqIcon,
     ToniqButton,
     ToniqInput,
 } from '@toniq-labs/design-system/dist/esm/elements/react-components';
 import {
-    Rocket24Icon,
-    BuildingStore24Icon,
-    Geometry24Icon,
-    Lifebuoy24Icon,
-    EntrepotLogo144Icon,
-    toniqColors,
     cssToReactStyleObject,
     Wallet24Icon,
     toniqFontStyles,
     Menu24Icon,
     Icp24Icon,
     LoaderAnimated24Icon,
-    Infinity24Icon,
     Search24Icon,
 } from '@toniq-labs/design-system';
 import extjs from '../ic/extjs.js';
 import {icpToString} from './PriceICP';
 import {useSearchParams} from 'react-router-dom';
-import {loadVolt, loadVoltBalance} from '../volt';
+import {loadVoltBalance} from '../volt';
 
 function useInterval(callback, delay) {
     const savedCallback = React.useRef();
@@ -136,40 +128,33 @@ export default function Navbar(props) {
                 active={props.view === 'sale'}
                 onClick={() => goTo('/sale')}
                 text="Launchpad"
-                icon={Rocket24Icon}
             />
             <ToniqToggleButton
                 className="toniq-toggle-button-text-only"
                 active={props.view === 'marketplace'}
                 onClick={() => goTo('/marketplace')}
                 text="Marketplace"
-                icon={BuildingStore24Icon}
             />
             <ToniqToggleButton
                 className="toniq-toggle-button-text-only"
                 active={props.view === 'earn'}
                 onClick={() => goTo('/earn')}
                 text="Earn"
-                icon={Infinity24Icon}
             />
             <ToniqToggleButton
                 className="toniq-toggle-button-text-only"
                 active={props.view === 'create'}
                 onClick={() => goTo('/create')}
                 text="Create"
-                icon={Geometry24Icon}
             />
             <ToniqToggleButton
                 className="toniq-toggle-button-text-only"
                 active={props.view === 'contact'}
                 onClick={() => goTo('/contact')}
                 text="Support"
-                icon={Lifebuoy24Icon}
             />
         </>
     );
-
-    const entrepotTitleStyles = {};
 
     return (
         <>
@@ -184,8 +169,8 @@ export default function Navbar(props) {
             />
             <div className={classes.root}>
                 <CssBaseline />
-                <AppBar position="fixed" style={{zIndex: 1400, background: 'black'}}>
-                    <Toolbar style={{gap: '4px', alignItems: 'stretch', minHeight: '70px'}}>
+                <AppBar position="fixed" style={{zIndex: 1400, background: '#F79010'}}>
+                    <Toolbar style={{gap: '4px', alignItems: 'stretch', minHeight: '100px'}}>
                         <Typography
                             style={{display: 'flex', alignItems: 'center'}}
                             variant="h6"
@@ -196,23 +181,14 @@ export default function Navbar(props) {
                                 onClick={() => goTo('/')}
                             >
                                 <img
-                                    src="/Mdvo.png"
+                                    src="/logo-merkado.png"
                                     style={{
-                                        height: '54px',
-                                        width: '54px',
+                                        height: '80px',
+                                        width: '194px',
                                         margin: '8px',
                                     }}
                                     alt="Logo"
                                 />
-                                <span
-                                    style={{
-                                        color: 'white',
-                                        fontFamily: 'Noto-Serif',
-                                        fontSize: 30,
-                                    }}
-                                >
-                                    Merkado
-                                </span>
                             </a>
                         </Typography>
                         <ToniqInput
@@ -234,7 +210,45 @@ export default function Navbar(props) {
                         />
                         <div className={classes.grow} />
                         <div className={classes.bigScreenNavButtons}>{navBarButtons}</div>
+                        {/* <div className={classes.bigScreenNavButtons}>
+                            <Menu click={click}>
+                                <MenuItem onClick={() => history.push('/sale')}>Launch</MenuItem>
+                                <MenuItem onClick={() => history.push('/marketplace')}>
+                                    Marketplace
+                                </MenuItem>
+                                <MenuItem onClick={() => history.push('/earn')}>Earn</MenuItem>
+                                <MenuItem onClick={() => history.push('/create')}>Create</MenuItem>
+                                <MenuItem onClick={() => history.push('/contact')}>
+                                    Support
+                                </MenuItem>
+                                <MenuItem>
+                                    <div className="mobile">
+                                        <Button
+                                            text="Connect Wallet"
+                                            link="https://www.google.com.br/"
+                                        />
+                                    </div>
+                                </MenuItem>
 
+                                <MenuItem>
+                                    <IconButton
+                                        mx={5}
+                                        _hover={{
+                                            cursor: 'pointer',
+                                            color: '#',
+                                        }}
+                                        onClick={toggleColorMode}
+                                        icon={
+                                            colorMode === 'light' ? (
+                                                <DarkModeIcon w={5} h={5} />
+                                            ) : (
+                                                <Brightness5Icon w={5} h={5} />
+                                            )
+                                        }
+                                    />
+                                </MenuItem>
+                            </Menu>
+                        </div> */}
                         <ToniqToggleButton
                             className={`toniq-toggle-button-text-only ${classes.smallScreenMenuButton}`}
                             active={open}
@@ -383,43 +397,43 @@ const useStyles = makeStyles(theme => {
             flexGrow: 1,
         },
         marketplace: {
-            backgroundImage: "url('/icon/marketplace.png')",
-            backgroundRepeat: 'no-repeat',
             backgroundSize: '20px',
             backgroundPosition: '0 49%',
             paddingLeft: 30,
-            '&:hover, &.selected': {
-                backgroundImage: "url('/icon/marketplace-g.png')",
+            '&:hover': {
+                color: '#d0a600 !important',
+                backgroundColor: '#fff',
+                borderBottom: '3px solid #d0a600 !important',
             },
         },
         create: {
-            backgroundImage: "url('/icon/create.png')",
-            backgroundRepeat: 'no-repeat',
             backgroundSize: '20px',
             backgroundPosition: '0 49%',
             paddingLeft: 30,
-            '&:hover, &.selected': {
-                backgroundImage: "url('/icon/create-g.png')",
+            '&:hover': {
+                color: '#d0a600 !important',
+                backgroundColor: '#fff',
+                borderBottom: '3px solid #d0a600 !important',
             },
         },
         contact: {
-            backgroundImage: "url('/icon/support.png')",
-            backgroundRepeat: 'no-repeat',
             backgroundSize: '20px',
             backgroundPosition: '0 49%',
             paddingLeft: 30,
-            '&:hover, &.selected': {
-                backgroundImage: "url('/icon/support-g.png')",
+            '&:hover': {
+                color: '#d0a600 !important',
+                backgroundColor: '#fff',
+                borderBottom: '3px solid #d0a600 !important',
             },
         },
         watchlist: {
-            backgroundImage: "url('/icon/watchlist.png')",
-            backgroundRepeat: 'no-repeat',
             backgroundSize: '20px',
             backgroundPosition: '0 49%',
             paddingLeft: 30,
-            '&:hover, &.selected': {
-                backgroundImage: "url('/icon/watchlist-g.png')",
+            '&:hover': {
+                color: '#d0a600 !important',
+                backgroundColor: '#fff',
+                borderBottom: '3px solid #d0a600 !important',
             },
         },
         bigScreenNavButtons: {
@@ -441,9 +455,9 @@ const useStyles = makeStyles(theme => {
             paddingTop: '40px',
             height: 73,
             '&:hover': {
-                color: '#00d092 !important',
+                color: '#d0a600 !important',
                 backgroundColor: '#fff',
-                borderBottom: '3px solid #00d092 !important',
+                borderBottom: '3px solid #d0a600 !important',
             },
         },
     };

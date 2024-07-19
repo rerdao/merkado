@@ -39,7 +39,7 @@ import {useNavigate} from 'react-router';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import ViewComfyIcon from '@material-ui/icons/ViewComfy';
 import CollectionDetails from './CollectionDetails';
-import {EntrepotAllStats, EntrepotCollectionStats} from '../utils';
+import {MerkadoAllStats, MerkadoCollectionStats} from '../utils';
 import {redirectIfBlockedFromEarnFeatures} from '../location/redirect-from-marketplace';
 const api = extjs.connect('https://icp0.io/');
 const perPage = 60;
@@ -602,7 +602,7 @@ export default function Listings(props) {
 
     useInterval(_updates, 60 * 1000);
     React.useEffect(() => {
-        if (EntrepotAllStats().length) setStats(EntrepotCollectionStats(collection.canister));
+        if (MerkadoAllStats().length) setStats(MerkadoCollectionStats(collection.canister));
         loadFilterData().then(r => {
             if (r) {
                 setFilterData(r);

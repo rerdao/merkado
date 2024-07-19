@@ -33,11 +33,11 @@ import AuctionForm from './AuctionForm';
 import {useNavigate} from 'react-router-dom';
 import extjs from '../ic/extjs.js';
 import {
-    EntrepotNFTImage,
-    EntrepotNFTLink,
-    EntrepotNFTMintNumber,
-    EntrepotGetICPUSD,
-    EntrepotCollectionStats,
+    MerkadoNFTImage,
+    MerkadoNFTLink,
+    MerkadoNFTMintNumber,
+    MerkadoGetICPUSD,
+    MerkadoCollectionStats,
 } from '../utils';
 import {useParams} from 'react-router-dom';
 import {redirectIfBlockedFromEarnFeatures} from '../location/redirect-from-marketplace';
@@ -75,7 +75,7 @@ const Detail = props => {
         floor,
         setFloor,
     ] = React.useState(
-        EntrepotCollectionStats(canister) ? EntrepotCollectionStats(canister).floor : '',
+        MerkadoCollectionStats(canister) ? MerkadoCollectionStats(canister).floor : '',
     );
     const [
         license,
@@ -155,7 +155,7 @@ const Detail = props => {
         let {index, canister} = extjs.decodeTokenId(tokenid);
         if (canister === '7i54s-nyaaa-aaaal-abomq-cai')
             try {
-                let x = await fetch(EntrepotNFTImage(canister, index, tokenid, true));
+                let x = await fetch(MerkadoNFTImage(canister, index, tokenid, true));
                 let contentType = x.headers.get('Content-Type');
                 if (contentType === 'image/svg+xml') {
                     setOverrideDetailPage('dfinity_deck');
@@ -167,7 +167,7 @@ const Detail = props => {
         // if (canister === 'ugdkf-taaaa-aaaak-acoia-cai') {
         //   await fetch(
         //     `https://api.allorigins.win/get?url=${encodeURIComponent(
-        //       EntrepotNFTImage(canister, index, tokenid, true),
+        //       MerkadoNFTImage(canister, index, tokenid, true),
         //     )}`,
         //   )
         //     .then(response => {
@@ -236,7 +236,7 @@ const Detail = props => {
 
     useInterval(_refresh, 10 * 1000);
     useInterval(() => {
-        var nf = EntrepotCollectionStats(canister) ? EntrepotCollectionStats(canister).floor : '';
+        var nf = MerkadoCollectionStats(canister) ? MerkadoCollectionStats(canister).floor : '';
         setFloor(nf);
     }, 10 * 1000);
 
@@ -351,8 +351,8 @@ const Detail = props => {
         // }
 
         if (index == 99 && canister == 'kss7i-hqaaa-aaaah-qbvmq-cai')
-            detailPage = 'interactive_nfts_or_videos';    
-        
+            detailPage = 'interactive_nfts_or_videos';
+
         if (index >= 9 && index <= 19 && canister == 'yy7m6-daaaa-aaaag-qciqa-cai')
             detailPage = 'interactive_nfts_or_videos';
 
@@ -362,7 +362,7 @@ const Detail = props => {
             case 'generative_assets_on_nft_canister':
                 return (
                     <img
-                        src={EntrepotNFTImage(canister, index, tokenid, true)}
+                        src={MerkadoNFTImage(canister, index, tokenid, true)}
                         alt=""
                         className={classes.nftImage}
                         style={{
@@ -390,7 +390,7 @@ const Detail = props => {
                 return (
                     <iframe
                         frameBorder="0"
-                        src={EntrepotNFTImage(canister, index, tokenid, true)}
+                        src={MerkadoNFTImage(canister, index, tokenid, true)}
                         alt=""
                         className={classes.nftImage}
                         style={{
@@ -413,19 +413,19 @@ const Detail = props => {
             // for videos that don't fit in the iframe and need a video tag
             case 'videos_that_dont_fit_in_frame':
                 return extractEmbeddedVideo(
-                    EntrepotNFTImage(canister, index, tokenid, true),
+                    MerkadoNFTImage(canister, index, tokenid, true),
                     classes,
                 );
             // for pre-generated images residing on asset canisters
             // case "rw623-hyaaa-aaaah-qctcq-cai": doesn't work for OG medals
             case 'asset_canisters':
                 return extractEmbeddedImage(
-                    EntrepotNFTImage(canister, index, tokenid, true),
+                    MerkadoNFTImage(canister, index, tokenid, true),
                     classes,
                 );
             case 'dfinity_deck': {
                 let x = extractEmbeddedImage(
-                    EntrepotNFTImage(canister, index, tokenid, true),
+                    MerkadoNFTImage(canister, index, tokenid, true),
                     classes,
                 );
                 x.props.style.maxWidth = 1000;
@@ -436,7 +436,7 @@ const Detail = props => {
             default:
                 return (
                     <img
-                        src={EntrepotNFTImage(canister, index, tokenid, false)}
+                        src={MerkadoNFTImage(canister, index, tokenid, false)}
                         alt=""
                         className={classes.nftImage}
                         style={{
@@ -558,7 +558,7 @@ const Detail = props => {
                             >
                                 {collection.name}
                             </a>{' '}
-                            #{EntrepotNFTMintNumber(collection.canister, index)}
+                            #{MerkadoNFTMintNumber(collection.canister, index)}
                         </Typography>
                         <Grid container>
                             <Grid item style={{marginRight: 20}}>
@@ -568,7 +568,7 @@ const Detail = props => {
                                     style={{fontWeight: 'bold'}}
                                     component="a"
                                     target="_blank"
-                                    href={EntrepotNFTLink(collection.canister, index, tokenid)}
+                                    href={MerkadoNFTLink(collection.canister, index, tokenid)}
                                 >
                                     View NFT onchain
                                 </Button>
@@ -629,7 +629,7 @@ const Detail = props => {
                                                 >
                                                     (
                                                     <PriceUSD
-                                                        price={EntrepotGetICPUSD(listing.price)}
+                                                        price={MerkadoGetICPUSD(listing.price)}
                                                     />
                                                     )
                                                 </Typography>
@@ -669,7 +669,7 @@ const Detail = props => {
                                                                 >
                                                                     (
                                                                     <PriceUSD
-                                                                        price={EntrepotGetICPUSD(
+                                                                        price={MerkadoGetICPUSD(
                                                                             auction.reserve,
                                                                         )}
                                                                     />
@@ -713,7 +713,7 @@ const Detail = props => {
                                                                 >
                                                                     (
                                                                     <PriceUSD
-                                                                        price={EntrepotGetICPUSD(
+                                                                        price={MerkadoGetICPUSD(
                                                                             auction.bids[
                                                                                 auction.bids
                                                                                     .length - 1
@@ -813,7 +813,7 @@ const Detail = props => {
                                                                 >
                                                                     (
                                                                     <PriceUSD
-                                                                        price={EntrepotGetICPUSD(
+                                                                        price={MerkadoGetICPUSD(
                                                                             offers[0].amount,
                                                                         )}
                                                                     />
@@ -858,7 +858,7 @@ const Detail = props => {
                                                                         >
                                                                             (
                                                                             <PriceUSD
-                                                                                price={EntrepotGetICPUSD(
+                                                                                price={MerkadoGetICPUSD(
                                                                                     transactions[0]
                                                                                         .price,
                                                                                 )}
@@ -1081,10 +1081,10 @@ const Detail = props => {
                                                                         />
                                                                     </strong>
                                                                     <br />
-                                                                    {EntrepotGetICPUSD(a.amount) ? (
+                                                                    {MerkadoGetICPUSD(a.amount) ? (
                                                                         <small>
                                                                             <PriceUSD
-                                                                                price={EntrepotGetICPUSD(
+                                                                                price={MerkadoGetICPUSD(
                                                                                     a.amount,
                                                                                 )}
                                                                             />
@@ -1223,12 +1223,12 @@ const Detail = props => {
                                                                                     />
                                                                                 </strong>
                                                                                 <br />
-                                                                                {EntrepotGetICPUSD(
+                                                                                {MerkadoGetICPUSD(
                                                                                     offer.amount,
                                                                                 ) ? (
                                                                                     <small>
                                                                                         <PriceUSD
-                                                                                            price={EntrepotGetICPUSD(
+                                                                                            price={MerkadoGetICPUSD(
                                                                                                 offer.amount,
                                                                                             )}
                                                                                         />
@@ -1417,14 +1417,14 @@ const Detail = props => {
                                                                                     />
                                                                                 </strong>
                                                                                 <br />
-                                                                                {EntrepotGetICPUSD(
+                                                                                {MerkadoGetICPUSD(
                                                                                     BigInt(
                                                                                         transaction.price,
                                                                                     ),
                                                                                 ) ? (
                                                                                     <small>
                                                                                         <PriceUSD
-                                                                                            price={EntrepotGetICPUSD(
+                                                                                            price={MerkadoGetICPUSD(
                                                                                                 BigInt(
                                                                                                     transaction.price,
                                                                                                 ),

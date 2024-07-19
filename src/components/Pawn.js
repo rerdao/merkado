@@ -9,10 +9,10 @@ import PriceUSD from './PriceUSD';
 import {Link} from 'react-router-dom';
 import extjs from '../ic/extjs.js';
 import {
-    EntrepotNFTImage,
-    EntrepotNFTMintNumber,
-    EntrepotDisplayNFT,
-    EntrepotGetICPUSD,
+    MerkadoNFTImage,
+    MerkadoNFTMintNumber,
+    MerkadoDisplayNFT,
+    MerkadoGetICPUSD,
 } from '../utils.js';
 
 function useInterval(callback, delay) {
@@ -45,7 +45,7 @@ export default function Pawn(props) {
     ] = React.useState(false);
     let {canister, index} = extjs.decodeTokenId(props.event.tokenid);
     const nftImg = () => {
-        return EntrepotNFTImage(canister, index, props.event.tokenid);
+        return MerkadoNFTImage(canister, index, props.event.tokenid);
     };
     const styles = {
         avatarSkeletonContainer: {
@@ -136,7 +136,7 @@ export default function Pawn(props) {
                         }}
                     >
                         <div style={{...styles.avatarSkeletonContainer}}>
-                            {EntrepotDisplayNFT(
+                            {MerkadoDisplayNFT(
                                 canister,
                                 props.event.tokenid,
                                 imgLoaded,
@@ -148,7 +148,7 @@ export default function Pawn(props) {
                     <div style={{display: 'inline-block', verticalAlign: 'middle'}}>
                         <strong>
                             {getCollection(canister).name}{' '}
-                            {'#' + EntrepotNFTMintNumber(canister, index)}
+                            {'#' + MerkadoNFTMintNumber(canister, index)}
                         </strong>
                         {props.event.floor ? (
                             <>
@@ -168,9 +168,9 @@ export default function Pawn(props) {
                     <PriceICP price={props.event.amount} />
                 </strong>
                 <br />
-                {EntrepotGetICPUSD(props.event.amount) ? (
+                {MerkadoGetICPUSD(props.event.amount) ? (
                     <small>
-                        <PriceUSD price={EntrepotGetICPUSD(props.event.amount)} />
+                        <PriceUSD price={MerkadoGetICPUSD(props.event.amount)} />
                     </small>
                 ) : (
                     ''
@@ -181,9 +181,9 @@ export default function Pawn(props) {
                     <PriceICP price={props.event.reward} />
                 </strong>
                 <br />
-                {EntrepotGetICPUSD(props.event.reward) ? (
+                {MerkadoGetICPUSD(props.event.reward) ? (
                     <small>
-                        <PriceUSD price={EntrepotGetICPUSD(props.event.reward)} />
+                        <PriceUSD price={MerkadoGetICPUSD(props.event.reward)} />
                     </small>
                 ) : (
                     ''

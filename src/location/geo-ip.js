@@ -26,13 +26,13 @@ export async function checkIfToniqEarnAllowed() {
                 },
                 error => {
                     console.error(error);
-                    // if any error occurs, resort to simply allowing the user to access Toniq Earn features
+                    // if any error occurs, resort to simply allowing the user to access Merkado Earn features
                     resolve(true);
                 },
             );
         } catch (error) {
             console.error(error);
-            // if any error occurs, resort to simply allowing the user to access Toniq Earn features
+            // if any error occurs, resort to simply allowing the user to access Merkado Earn features
             resolve(true);
         }
     });

@@ -7,10 +7,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Skeleton from '@material-ui/lab/Skeleton';
 import extjs from '../ic/extjs.js';
 import {
-    EntrepotNFTImage,
-    EntrepotNFTLink,
-    EntrepotNFTMintNumber,
-    EntrepotDisplayNFT,
+    MerkadoNFTImage,
+    MerkadoNFTLink,
+    MerkadoNFTMintNumber,
+    MerkadoDisplayNFT,
 } from '../utils.js';
 const _showListingPrice = n => {
     n = Number(n) / 100000000;
@@ -50,13 +50,13 @@ export default function SoldListing(props) {
         },
     };
     const mintNumber = () => {
-        return EntrepotNFTMintNumber(props.collection, index);
+        return MerkadoNFTMintNumber(props.collection, index);
     };
     const nftImg = () => {
-        return EntrepotNFTImage(props.collection, index, tokenid);
+        return MerkadoNFTImage(props.collection, index, tokenid);
     };
     const nftLink = () => {
-        return EntrepotNFTLink(props.collection, index, tokenid);
+        return MerkadoNFTLink(props.collection, index, tokenid);
     };
     return (
         <Grid style={{height: '100%'}} item xl={2} lg={3} md={4} sm={6} xs={6}>
@@ -298,12 +298,8 @@ export default function SoldListing(props) {
 
                     <a href={nftLink()} target="_blank" rel="noreferrer">
                         <div style={{...styles.avatarSkeletonContainer}}>
-                            {EntrepotDisplayNFT(
-                                props.collection,
-                                tokenid,
-                                imgLoaded,
-                                nftImg(),
-                                () => setImgLoaded(true),
+                            {MerkadoDisplayNFT(props.collection, tokenid, imgLoaded, nftImg(), () =>
+                                setImgLoaded(true),
                             )}
                         </div>
                     </a>

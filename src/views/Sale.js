@@ -2,14 +2,13 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import {makeStyles} from '@material-ui/core/styles';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import Features from '../components/Features';
-import Carousel from 'react-material-ui-carousel';
+
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
@@ -61,7 +60,6 @@ const useStyles = makeStyles(theme => ({
 export default function Sale(props) {
     const classes = useStyles();
 
-    const navigate = useNavigate();
     return (
         <>
             <div style={{width: '100%', display: 'block', position: 'relative'}}>
@@ -77,7 +75,7 @@ export default function Sale(props) {
 
                     <Grid container spacing={2} direction="row" alignItems="center">
                         {props.collections
-                            .filter(a => typeof a.sale != 'undefined' && a.sale == true)
+                            .filter(a => typeof a.sale != 'undefined' && a.sale === true)
                             .sort((a, b) => {
                                 return b.priority - a.priority;
                             })
@@ -116,7 +114,7 @@ export default function Sale(props) {
                                 );
                             })}
                     </Grid>
-                    <h1 className={classes.heading}>Launch your NFT with Entrepot</h1>
+                    <h1 className={classes.heading}>Launch your NFT with Merkado</h1>
                     <p
                         style={{
                             textAlign: 'center',
@@ -125,7 +123,7 @@ export default function Sale(props) {
                         }}
                     >
                         Get in touch with our team to list your NFT to launch on the Internet
-                        Computer with Entrepot!
+                        Computer with Merkado!
                     </p>
                     <Features />
                 </div>

@@ -22,7 +22,6 @@ import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import GavelIcon from '@material-ui/icons/Gavel';
-import {EntrepotAllStats} from '../utils';
 export default function UserDetail(props) {
     const [
         anchorEl,

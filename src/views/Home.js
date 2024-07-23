@@ -8,13 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import {makeStyles} from '@material-ui/core/styles';
 import {useNavigate} from 'react-router-dom';
 import Features from '../components/Features';
-// import ReactPlayer from 'react-player';
-// import Carousel from 'react-material-ui-carousel';
-import styled from 'styled-components';
-import {keyframes} from 'styled-components';
-import CoverVideo from '../components/CoverVideo';
+import Carousel from 'react-material-ui-carousel';
 import TypeWriterText from '../components/TypeWriterText';
-import RoundTextBlack from '../assets/Rounded-Text-Black.png';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -40,8 +35,8 @@ const useStyles = makeStyles(theme => ({
         position: 'relative',
     },
     bannerimg: {
-        maxWidth: '100%',
-        borderRadius: '30px',
+        maxWidth: '50%',
+        borderRadius: '50px',
     },
     anchor: {
         position: 'absolute',
@@ -53,97 +48,30 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid black',
         left: 'calc(50% - 20px)',
     },
+    container: {
+        width: '100%',
+        minHeight: 'auto',
+        margin: '0 auto',
+
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column-reverse',
+            width: '100%',
+            marginTop: '2rem',
+        },
+    },
+    boxes: {
+        width: '50%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 }));
-
-const Container = styled.div`
-    width: 75%;
-    min-height: auto;
-    margin: 0 auto;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    @media (max-width: 64em) {
-        width: 85%;
-    }
-    @media (max-width: 48em) {
-        flex-direction: column-reverse;
-        width: 100%;
-
-        &>*: first-child {
-            width: 100%;
-            margin-top: 2rem;
-        }
-    }
-`;
-
-const Box = styled.div`
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
-
-const rotate = keyframes`
-  100% {
-    transform: rotate(1turn);
-  }
-`;
-
-const Round = styled.div`
-    position: absolute;
-    bottom: 2rem;
-    right: 90%;
-    width: 6rem;
-    height: 6rem;
-    border: 1px solid ${props => props.theme.text};
-    border-radius: 50%;
-
-    img {
-        width: 100%;
-        height: auto;
-        animation: ${rotate} 6s linear infinite reverse;
-    }
-
-    @media (max-width: 64em) {
-        width: 4rem;
-        height: 4rem;
-        left: none;
-        right: 2rem;
-        bottom: 100%;
-    }
-
-    @media (max-width: 48em) {
-        right: 1rem;
-    }
-`;
-
-const Circle = styled.span`
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    background-color: ${props => props.theme.text};
-    color: ${props => props.theme.body};
-    font-size: ${props => props.theme.fontxl};
-
-    @media (max-width: 64em) {
-        width: 2rem;
-        height: 2rem;
-        font-size: ${props => props.theme.fontlg};
-    }
-`;
 
 export default function Home(props) {
     const classes = useStyles();
@@ -202,97 +130,66 @@ export default function Home(props) {
                 <div
                     style={{
                         maxWidth: 1200,
-                        margin: '50px auto',
+                        margin: '10px auto',
                     }}
                 >
-                    <Container>
-                        <Box>
+                    <div className={classes.container}>
+                        <div className={classes.boxes}>
                             <TypeWriterText />
-                        </Box>
-                        <Box>
-                            <CoverVideo />
-                        </Box>
+                        </div>
+                        <div className={classes.boxes}></div>
+                    </div>
 
-                        <Round>
-                            <Circle>&#x2193;</Circle>
-                            <img src={RoundTextBlack} alt="NFT"></img>
-                        </Round>
-                    </Container>
-                    {/* <h1 className={classes.heading}>Welcome to Merkado</h1>
-                    <p
-                        style={{
-                            textAlign: 'center',
-                            fontSize: '1.3em',
-                            padding: '0 30px',
-                        }}
-                    >
-                        By definition, an entrepôt is a port, city, or trading post where
-                        merchandise may be imported, stored or traded. Such centers played a
-                        critical role in trade during the days of wind-powered shipping. We
-                        developed <strong>Merkado.app</strong> to provide a similar role in the
-                        digital world - a trading post where users can store and trade digital
-                        assets in a decentralized, non-custodial way.
+                    <h1 className={classes.heading}>Welcome to Merkado</h1>
+                    <div className={classes.banner}>
                         {items.length > 0 ? (
-                            <div className={classes.banner}>
-                                <Carousel
-                                    style={{height: 485}}
-                                    autoPlay={true}
-                                    interval={5000}
-                                    animation={'slide'}
-                                    reverseEdgeAnimationDirection={true}
-                                    indicators={false}
-                                    navButtonsAlwaysVisible={true}
-                                >
-                                    {items.map((item, i) => {
-                                        if (item.video) {
-                                            return (
-                                                <a key={i} href={item.link}>
-                                                    <ReactPlayer
-                                                        style={{borderRadius: 30}}
-                                                        width={700}
-                                                        height={384}
-                                                        playing={true}
-                                                        url="/bch-entrepot.mp4"
-                                                    />
-                                                </a>
-                                            );
-                                        } else if (item.link) {
-                                            return (
-                                                <a key={i} href={item.link}>
-                                                    <div
-                                                        style={{
-                                                            borderRadius: 5,
-                                                            height: 485,
-                                                            background:
-                                                                "url('" +
-                                                                item.image +
-                                                                "') center center / cover no-repeat",
-                                                        }}
-                                                    ></div>
-                                                </a>
-                                            );
-                                        } else {
-                                            return (
+                            <Carousel
+                                style={{height: 175}}
+                                autoPlay={true}
+                                interval={5000}
+                                animation={'slide'}
+                                reverseEdgeAnimationDirection={true}
+                                indicators={false}
+                                navButtonsAlwaysVisible={false}
+                            >
+                                {items.map((item, i) => {
+                                    if (item.link) {
+                                        return (
+                                            <a key={i} href={item.link}>
                                                 <div
-                                                    key={i}
                                                     style={{
-                                                        borderRadius: 30,
-                                                        height: 485,
+                                                        borderRadius: 20,
+                                                        height: 175,
                                                         background:
                                                             "url('" +
                                                             item.image +
                                                             "') center center / cover no-repeat",
                                                     }}
                                                 ></div>
-                                            );
-                                        }
-                                    })}
-                                </Carousel>
-                            </div>
+                                            </a>
+                                        );
+                                    } else {
+                                        return (
+                                            <div
+                                                key={i}
+                                                style={{
+                                                    borderRadius: 20,
+                                                    height: 175,
+                                                    background:
+                                                        "url('" +
+                                                        item.image +
+                                                        "') center center / cover no-repeat",
+                                                }}
+                                            ></div>
+                                        );
+                                    }
+                                })}
+                            </Carousel>
                         ) : (
                             ''
                         )}
-                    </p> */}
+                    </div>
+
                     <Button
                         className={classes.marketBtn}
                         fullWidth

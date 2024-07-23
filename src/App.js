@@ -22,7 +22,7 @@ import Marketplace from './views/Marketplace';
 import Mint from './views/Mint';
 import Create from './views/Create';
 import Home from './views/Home';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import Sale from './views/Sale';
 import Contact from './views/Contact';
 import Opener from './components/Opener';
@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         bottom: 0,
         height: '100px !important',
-        background: '#141B39',
+        background: '#F79010',
         color: 'white',
         paddingTop: 30,
         // marginLeft : -24,
@@ -150,6 +150,7 @@ const isDevEnv = () => {
     return false;
 };
 const TREASURECANISTER = 'yigae-jqaaa-aaaah-qczbq-cai';
+
 export default function App() {
     const {pathname} = useLocation();
     const classes = useStyles();
@@ -1189,12 +1190,6 @@ export default function App() {
             <Typography variant="body1">
                 Developed by NFTDavao &copy; All rights reserved 2024
                 <br />
-                <a
-                    href="https://docs.google.com/document/d/13aj8of_UXdByGoFdMEbbIyltXMn0TXHiUie2jO-qnNk/edit"
-                    target="_blank"
-                >
-                    Terms of Service
-                </a>
             </Typography>
         </div>
     );

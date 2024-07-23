@@ -19,7 +19,7 @@ import ListIcon from '@material-ui/icons/List';
 import Pagination from '@material-ui/lab/Pagination';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import extjs from '../ic/extjs.js';
-import {EntrepotGetAllLiked} from '../utils';
+import {MerkadoGetAllLiked} from '../utils';
 import {useTheme} from '@material-ui/core/styles';
 import NFT from './NFT';
 import UserDetail from './UserDetail';

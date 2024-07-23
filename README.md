@@ -1,6 +1,6 @@
-# entrepot-app
+# Merkado
 
-Frontend code for https://entrepot.app.
+Merkado, NFT (Non-Fungible Token) marketplace specifically designed to empower diverse community of artists, from seasoned professionals to budding creators eager to explore the exciting world of Web3.
 
 # Dev
 

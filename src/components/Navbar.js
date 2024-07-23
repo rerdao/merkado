@@ -25,6 +25,7 @@ import extjs from '../ic/extjs.js';
 import {icpToString} from './PriceICP';
 import {useSearchParams} from 'react-router-dom';
 import {loadVoltBalance} from '../volt';
+import LogoPng from '../assets/logo-merkado.png';
 
 function useInterval(callback, delay) {
     const savedCallback = React.useRef();
@@ -161,16 +162,16 @@ export default function Navbar(props) {
             <style
                 dangerouslySetInnerHTML={{
                     __html: `
-      .${classes.smallScreenNav} ${ToniqToggleButton.tagName} {
-        margin: 8px 16px;
-      }
-    `,
+            .${classes.smallScreenNav} ${ToniqToggleButton.tagName} {
+                margin: 8px 16px;
+            }
+            `,
                 }}
             />
             <div className={classes.root}>
                 <CssBaseline />
                 <AppBar position="fixed" style={{zIndex: 1400, background: '#F79010'}}>
-                    <Toolbar style={{gap: '4px', alignItems: 'stretch', minHeight: '100px'}}>
+                    <Toolbar style={{gap: '4px', alignItems: 'stretch', minHeight: '40px'}}>
                         <Typography
                             style={{display: 'flex', alignItems: 'center'}}
                             variant="h6"
@@ -181,10 +182,10 @@ export default function Navbar(props) {
                                 onClick={() => goTo('/')}
                             >
                                 <img
-                                    src="/logo-merkado.png"
+                                    src={LogoPng}
                                     style={{
-                                        height: '80px',
-                                        width: '194px',
+                                        height: '60px',
+                                        width: '164px',
                                         margin: '8px',
                                     }}
                                     alt="Logo"
@@ -210,45 +211,7 @@ export default function Navbar(props) {
                         />
                         <div className={classes.grow} />
                         <div className={classes.bigScreenNavButtons}>{navBarButtons}</div>
-                        {/* <div className={classes.bigScreenNavButtons}>
-                            <Menu click={click}>
-                                <MenuItem onClick={() => history.push('/sale')}>Launch</MenuItem>
-                                <MenuItem onClick={() => history.push('/marketplace')}>
-                                    Marketplace
-                                </MenuItem>
-                                <MenuItem onClick={() => history.push('/earn')}>Earn</MenuItem>
-                                <MenuItem onClick={() => history.push('/create')}>Create</MenuItem>
-                                <MenuItem onClick={() => history.push('/contact')}>
-                                    Support
-                                </MenuItem>
-                                <MenuItem>
-                                    <div className="mobile">
-                                        <Button
-                                            text="Connect Wallet"
-                                            link="https://www.google.com.br/"
-                                        />
-                                    </div>
-                                </MenuItem>
 
-                                <MenuItem>
-                                    <IconButton
-                                        mx={5}
-                                        _hover={{
-                                            cursor: 'pointer',
-                                            color: '#',
-                                        }}
-                                        onClick={toggleColorMode}
-                                        icon={
-                                            colorMode === 'light' ? (
-                                                <DarkModeIcon w={5} h={5} />
-                                            ) : (
-                                                <Brightness5Icon w={5} h={5} />
-                                            )
-                                        }
-                                    />
-                                </MenuItem>
-                            </Menu>
-                        </div> */}
                         <ToniqToggleButton
                             className={`toniq-toggle-button-text-only ${classes.smallScreenMenuButton}`}
                             active={open}

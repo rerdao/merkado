@@ -88,7 +88,7 @@ export default function UserDetail(props) {
                             {props.address ? (
                                 <Avatar
                                     style={{
-                                        border: 'solid 5px #00d092',
+                                        border: 'solid 5px #d05700',
                                         margin: '0 auto',
                                         height: 120,
                                         width: 120,

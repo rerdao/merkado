@@ -1188,7 +1188,7 @@ export default function App() {
     const footer = (
         <div className={classes.footer}>
             <Typography variant="body1">
-                Developed by NFTDavao &copy; All rights reserved 2024
+                Developed by Merkado &copy; All rights reserved 2024
                 <br />
             </Typography>
         </div>

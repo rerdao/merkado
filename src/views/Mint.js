@@ -436,7 +436,7 @@ export default function Mint(props) {
                                                         fontSize: '0.95em',
                                                         fontWeight: 'bold',
                                                         paddingBottom: 0,
-                                                        color: '#00d092',
+                                                        color: '#d05700',
                                                     }}
                                                     value={canister}
                                                     onChange={changeCanister}

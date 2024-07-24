@@ -6,20 +6,20 @@ import '@fontsource/sora';
 // A custom theme for this app
 const theme = createTheme({
     typography: {
-        fontFamily: 'Poppins',
+        fontFamily: '"Rubik", sanserif',
     },
     palette: {
         primary: {
-            main: '#00d092',
+            main: '#d05700',
         },
         secondary: {
-            main: '#00b894',
+            main: '#7a54eb',
         },
         error: {
             main: red.A400,
         },
         background: {
-            default: '#fafafa',
+            default: 'radial-gradient(rgb(189, 1, 1) 0%, rgb(189, 1, 1) 16%, transparent 42%)',
         },
     },
     overrides: {
@@ -40,18 +40,18 @@ const theme = createTheme({
         },
         MuiIconButton: {
             label: {
-                color: '#00b894',
+                color: '#d05700',
             },
         },
         MuiAvatar: {
             colorDefault: {
-                backgroundColor: '#00b894',
+                backgroundColor: '#d05700',
                 color: 'white',
             },
         },
         MuiListItemIcon: {
             root: {
-                color: '#00b894',
+                color: '#d05700',
             },
         },
     },

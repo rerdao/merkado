@@ -10,6 +10,8 @@ import {useNavigate} from 'react-router-dom';
 import Features from '../components/Features';
 import Carousel from 'react-material-ui-carousel';
 import TypeWriterText from '../components/TypeWriterText';
+import Roadmap from '../components/Roadmap';
+import Showcase from '../components/Showcase';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,26 +35,26 @@ const useStyles = makeStyles(theme => ({
     },
     banner: {
         position: 'relative',
+        width: '100%',
     },
     bannerimg: {
-        maxWidth: '50%',
+        maxWidth: '100%',
         borderRadius: '50px',
+        [theme.breakpoints.up('sm')]: {
+            width: '450px',
+        },
     },
     anchor: {
         position: 'absolute',
-        bottom: '-15px',
         background: 'white',
         borderRadius: '100%',
         padding: '5px',
         width: '40px',
         border: '1px solid black',
-        left: 'calc(50% - 20px)',
     },
     container: {
         width: '100%',
         minHeight: 'auto',
-        margin: '0 auto',
-
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -130,65 +132,66 @@ export default function Home(props) {
                 <div
                     style={{
                         maxWidth: 1200,
-                        margin: '10px auto',
+                        margin: '0',
                     }}
                 >
                     <div className={classes.container}>
                         <div className={classes.boxes}>
                             <TypeWriterText />
                         </div>
-                        <div className={classes.boxes}></div>
+                        <div className={classes.boxes}>
+                            <div className={classes.banner}>
+                                {items.length > 0 ? (
+                                    <Carousel
+                                        style={{height: 375}}
+                                        autoPlay={true}
+                                        interval={5000}
+                                        animation={'slide'}
+                                        reverseEdgeAnimationDirection={true}
+                                        indicators={false}
+                                        navButtonsAlwaysVisible={false}
+                                    >
+                                        {items.map((item, i) => {
+                                            if (item.link) {
+                                                return (
+                                                    <a key={i} href={item.link}>
+                                                        <div
+                                                            style={{
+                                                                borderRadius: 20,
+                                                                height: 375,
+                                                                background:
+                                                                    "url('" +
+                                                                    item.image +
+                                                                    "') center center / cover no-repeat",
+                                                            }}
+                                                        ></div>
+                                                    </a>
+                                                );
+                                            } else {
+                                                return (
+                                                    <div
+                                                        key={i}
+                                                        style={{
+                                                            borderRadius: 20,
+                                                            height: 375,
+                                                            background:
+                                                                "url('" +
+                                                                item.image +
+                                                                "') center center / cover no-repeat",
+                                                        }}
+                                                    ></div>
+                                                );
+                                            }
+                                        })}
+                                    </Carousel>
+                                ) : (
+                                    ''
+                                )}
+                            </div>
+                        </div>
                     </div>
 
-                    <h1 className={classes.heading}>Welcome to Merkado</h1>
-                    <div className={classes.banner}>
-                        {items.length > 0 ? (
-                            <Carousel
-                                style={{height: 175}}
-                                autoPlay={true}
-                                interval={5000}
-                                animation={'slide'}
-                                reverseEdgeAnimationDirection={true}
-                                indicators={false}
-                                navButtonsAlwaysVisible={false}
-                            >
-                                {items.map((item, i) => {
-                                    if (item.link) {
-                                        return (
-                                            <a key={i} href={item.link}>
-                                                <div
-                                                    style={{
-                                                        borderRadius: 20,
-                                                        height: 175,
-                                                        background:
-                                                            "url('" +
-                                                            item.image +
-                                                            "') center center / cover no-repeat",
-                                                    }}
-                                                ></div>
-                                            </a>
-                                        );
-                                    } else {
-                                        return (
-                                            <div
-                                                key={i}
-                                                style={{
-                                                    borderRadius: 20,
-                                                    height: 175,
-                                                    background:
-                                                        "url('" +
-                                                        item.image +
-                                                        "') center center / cover no-repeat",
-                                                }}
-                                            ></div>
-                                        );
-                                    }
-                                })}
-                            </Carousel>
-                        ) : (
-                            ''
-                        )}
-                    </div>
+                    {/* <h1 className={classes.heading}>Welcome to Merkado</h1> */}
 
                     <Button
                         className={classes.marketBtn}
@@ -196,7 +199,7 @@ export default function Home(props) {
                         variant={'outlined'}
                         onClick={() => navigate(`/marketplace`)}
                         color={'primary'}
-                        style={{fontWeight: 'bold', margin: '20px auto'}}
+                        style={{fontWeight: 'bold', marginTop: '50px'}}
                     >
                         Explore the Marketplace
                     </Button>
@@ -228,7 +231,8 @@ export default function Home(props) {
                             );
                         })}
                     </Grid>
-
+                    <Roadmap />
+                    <Showcase />
                     <Features />
                 </div>
             </div>

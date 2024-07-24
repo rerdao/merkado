@@ -1,7 +1,6 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
 
 const Title = styled.h2`
     font-size: 4rem;
@@ -117,11 +116,8 @@ const TypeWriterText = () => {
                 />
                 Merkado
             </Title>
-            <SubTitle1>NFTDavao Marketplace</SubTitle1>
+            <SubTitle1>NFT Marketplace</SubTitle1>
             <SubTitle2>Trade? Collect? Mint?</SubTitle2>
-            <ButtonContainer>
-                <Button>Explore</Button>
-            </ButtonContainer>
         </>
     );
 };

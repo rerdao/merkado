@@ -460,7 +460,7 @@ export default function Marketplace(props) {
                                                                         >
                                                                             <span
                                                                                 style={{
-                                                                                    color: '#00d092',
+                                                                                    color: '#d05700',
                                                                                 }}
                                                                             >
                                                                                 Volume
@@ -492,7 +492,7 @@ export default function Marketplace(props) {
                                                                         >
                                                                             <span
                                                                                 style={{
-                                                                                    color: '#00d092',
+                                                                                    color: '#d05700',
                                                                                 }}
                                                                             >
                                                                                 Listings
@@ -520,7 +520,7 @@ export default function Marketplace(props) {
                                                                         <Grid item md={4}>
                                                                             <span
                                                                                 style={{
-                                                                                    color: '#00d092',
+                                                                                    color: '#d05700',
                                                                                 }}
                                                                             >
                                                                                 Floor Price

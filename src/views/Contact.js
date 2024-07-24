@@ -48,7 +48,7 @@ export default function Contact(props) {
                         <Grid item xs={12} sm={12} md={12}>
                             <h1 style={{textAlign: 'center'}}>Contact Us</h1>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={12}>
+                        {/* <Grid item xs={12} sm={12} md={12}>
                             <p style={{textAlign: 'center', fontSize: '1.3em'}}>
                                 Entrepot.app is developed by ToniqLabs. If you need to talk to us
                                 about anything, you can email us at{' '}
@@ -71,7 +71,7 @@ export default function Contact(props) {
                                 </a>
                                 .
                             </p>
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12} sm={12} md={12}>
                             <h1 style={{textAlign: 'center'}}>FAQ</h1>
                         </Grid>

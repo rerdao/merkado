@@ -68,18 +68,6 @@ function useInterval(callback, delay) {
     }, [delay]);
 }
 
-// const loadAllListings = async (address, principal) => {
-// var response = await Promise.all(props.collections.map(a => api.canister(a.canister).tokens_ext(address).then(r => (r.hasOwnProperty('ok') ? r.ok : []).map(b => [extjs.encodeTokenId(a.canister, b[0]), b[1]]).filter(c => c[1].length > 0))).map(p => p.catch(e => e)));
-// var tokens = response.filter(result => !(result instanceof Error)).flat();
-// // var wrappedMap = {
-// // "bxdf4-baaaa-aaaah-qaruq-cai" : "qcg3w-tyaaa-aaaah-qakea-cai",
-// // "y3b7h-siaaa-aaaah-qcnwa-cai" : "4nvhy-3qaaa-aaaah-qcnoq-cai",
-// // "3db6u-aiaaa-aaaah-qbjbq-cai" : "d3ttm-qaaaa-aaaai-qam4a-cai",
-// // "q6hjz-kyaaa-aaaah-qcama-cai" : "xkbqi-2qaaa-aaaah-qbpqq-cai",
-// // "jeghr-iaaaa-aaaah-qco7q-cai" : "fl5nr-xiaaa-aaaai-qbjmq-cai"
-// // };
-// return tokens;
-// };
 const useStyles = makeStyles(theme => ({
     tabsViewBig: {
         [theme.breakpoints.down('sm')]: {
@@ -411,7 +399,7 @@ export default function UserLoan(props) {
     const styles = {
         empty: {
             maxWidth: 1200,
-            margin: '0 auto',
+            margin: '30px auto',
             textAlign: 'center',
         },
         grid: {
@@ -543,10 +531,6 @@ export default function UserLoan(props) {
                         <div style={{maxWidth: 1200, margin: '0 auto 0'}}>
                             <div style={{textAlign: 'center'}}>
                                 <div style={styles.empty}>
-                                    <div
-                                        className={classes.banner}
-                                        style={{background: "url('/toniq_earn.jpg')"}}
-                                    ></div>
                                     <div
                                         style={{
                                             width: '100%',

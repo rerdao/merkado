@@ -104,7 +104,7 @@ export default function Pawn(props) {
         if (props.event.apr < 2.5) return '#4CDEB3';
         if (props.event.apr < 3) return '#33D9A8';
         if (props.event.apr < 5) return '#1AD59D';
-        return '#00D092';
+        return '#d05700';
     };
 
     const toRate = r => (r * 100).toFixed(2);

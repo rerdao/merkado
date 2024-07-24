@@ -169,7 +169,7 @@ export default function Navbar(props) {
                 }}
             />
             <div className={classes.root}>
-                <CssBaseline />
+                {/* <CssBaseline /> */}
                 <AppBar position="fixed" style={{zIndex: 1400, background: '#F79010'}}>
                     <Toolbar style={{gap: '4px', alignItems: 'stretch', minHeight: '40px'}}>
                         <Typography
@@ -182,14 +182,23 @@ export default function Navbar(props) {
                                 onClick={() => goTo('/')}
                             >
                                 <img
-                                    src={LogoPng}
+                                    src="/Mdvo.png"
                                     style={{
-                                        height: '60px',
-                                        width: '164px',
+                                        height: '54px',
+                                        width: '54px',
                                         margin: '8px',
                                     }}
                                     alt="Logo"
                                 />
+                                <span
+                                    style={{
+                                        color: 'black',
+                                        fontFamily: 'Rubik',
+                                        fontSize: 30,
+                                    }}
+                                >
+                                    MERKADO
+                                </span>
                             </a>
                         </Typography>
                         <ToniqInput
@@ -327,7 +336,6 @@ const useStyles = makeStyles(theme => {
             width: '250px',
             display: 'flex',
             right: 0,
-            backgroundColor: 'white',
             height: '100vh',
             justifyContent: 'flex-start',
             flexDirection: 'column',
@@ -365,7 +373,6 @@ const useStyles = makeStyles(theme => {
             paddingLeft: 30,
             '&:hover': {
                 color: '#d0a600 !important',
-                backgroundColor: '#fff',
                 borderBottom: '3px solid #d0a600 !important',
             },
         },
@@ -375,7 +382,6 @@ const useStyles = makeStyles(theme => {
             paddingLeft: 30,
             '&:hover': {
                 color: '#d0a600 !important',
-                backgroundColor: '#fff',
                 borderBottom: '3px solid #d0a600 !important',
             },
         },
@@ -385,7 +391,6 @@ const useStyles = makeStyles(theme => {
             paddingLeft: 30,
             '&:hover': {
                 color: '#d0a600 !important',
-                backgroundColor: '#fff',
                 borderBottom: '3px solid #d0a600 !important',
             },
         },
@@ -395,7 +400,6 @@ const useStyles = makeStyles(theme => {
             paddingLeft: 30,
             '&:hover': {
                 color: '#d0a600 !important',
-                backgroundColor: '#fff',
                 borderBottom: '3px solid #d0a600 !important',
             },
         },
@@ -409,19 +413,12 @@ const useStyles = makeStyles(theme => {
         button1: {
             fontSize: '1.2em',
             fontWeight: 'bold',
-            borderBottom: '3px solid transparent',
-            borderRadius: 0,
             textAlign: 'left',
             display: 'flex',
             justifyContent: 'flex-start',
-            paddingLeft: '30px',
+            paddingLeft: '50px',
             paddingTop: '40px',
             height: 73,
-            '&:hover': {
-                color: '#d0a600 !important',
-                backgroundColor: '#fff',
-                borderBottom: '3px solid #d0a600 !important',
-            },
         },
     };
 });

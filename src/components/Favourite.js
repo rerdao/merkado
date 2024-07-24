@@ -94,7 +94,7 @@ export default function Favourite(props) {
                 label={
                     props.showcount ? (
                         count ? (
-                            <span style={{fontSize: fontSize, color: '#00d092 '}}>
+                            <span style={{fontSize: fontSize, color: '#d05700 '}}>
                                 {count >= 1000 ? (count / 1000).toFixed(1) + 'k' : count}
                             </span>
                         ) : (

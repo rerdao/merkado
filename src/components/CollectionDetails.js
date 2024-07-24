@@ -129,7 +129,7 @@ export default function CollectionDetails(props) {
                                     spacing={2}
                                 >
                                     <Grid style={{borderRight: '1px dashed #ddd'}} item md={4}>
-                                        <span style={{color: '#00d092'}}>Volume</span>
+                                        <span style={{color: '#d05700'}}>Volume</span>
                                         <br />
                                         <strong>
                                             <PriceICP
@@ -141,12 +141,12 @@ export default function CollectionDetails(props) {
                                         </strong>
                                     </Grid>
                                     <Grid style={{borderRight: '1px dashed #ddd'}} item md={4}>
-                                        <span style={{color: '#00d092'}}>Listings</span>
+                                        <span style={{color: '#d05700'}}>Listings</span>
                                         <br />
                                         <strong>{stats.listings}</strong>
                                     </Grid>
                                     <Grid item md={4}>
-                                        <span style={{color: '#00d092'}}>Avg Price</span>
+                                        <span style={{color: '#d05700'}}>Avg Price</span>
                                         <br />
                                         <strong>
                                             {stats.average == '-' ? (
